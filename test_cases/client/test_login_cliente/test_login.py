@@ -3,11 +3,13 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
+from page_elements.client.login.modulo_login import Login
+
 class TestLogin:
     def setup_method(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
-        self.driver.get("")
+        self.driver.get("http://localhost/sistemarestaurante/public/login")
         time.sleep(3)
 
     def teardowm_method(self):
@@ -15,4 +17,5 @@ class TestLogin:
         print("Prueba visual completada")
 
     def testLogin(self):
-        self.driver.find_element(By.XPATH, "")
+        Login.login_account(self, "cliente2@gmail.com", "123456789a")
+        time.sleep(2)
