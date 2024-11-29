@@ -16,6 +16,9 @@ class TestLogin:
         self.driver.quit()
         print("Prueba visual completada")
 
-
-
-# Incluir acá los test cases para el módulo específico.
+    def test_agregar_items_carrito(self):
+        Login.login_account("clienteb@gmail.com", "123456789a")
+        self.driver.find_element(By.XPATH, "//a[text()='Realiza tu PEDIDO']").click()
+        self.driver.find_element(By.XPATH, "//div[@data-bs-target='#productoModal-110']").click()
+        self.driver.find_element(By.XPATH, "//button[@onclick='increaseCount(110, 45.00, 22)']").click()
+        self.driver.find_element(By.XPATH, '//button[@onclick="increaseTerm(110, \'medio\')"]').click()

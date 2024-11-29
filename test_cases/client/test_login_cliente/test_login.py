@@ -17,19 +17,31 @@ class TestLogin:
         print("Prueba visual completada")
 
     def test_login_miraflores(self):
-        Login.login_account(self, "clienteb@gmail.com", "123456789a", "Miraflores")
+        sucursal = "Miraflores"
+        Login.login_account(self, "clienteb@gmail.com", "123456789a", sucursal)
+        dev = Login.sucursal_select(self, sucursal)
+        assert sucursal in dev
         time.sleep(2)
 
     def test_login_sopocachi(self):
-        Login.login_account(self, "clienteb@gmail.com", "123456789a", "Sopocachi")
+        sucursal = "Sopocachi"
+        Login.login_account(self, "clienteb@gmail.com", "123456789a", sucursal)
+        dev = Login.sucursal_select(self, sucursal)
+        assert sucursal in dev
         time.sleep(2)
 
     def test_login__el_alto(self):
-        Login.login_account(self, "clienteb@gmail.com", "123456789a", "El Alto")
+        sucursal = "San Pedro"
+        Login.login_account(self, "clienteb@gmail.com", "123456789a", sucursal)
+        dev = Login.sucursal_select(self, sucursal)
+        assert sucursal in dev
         time.sleep(2)
 
     def test_login__san_pedro(self):
-        Login.login_account(self, "clienteb@gmail.com", "123456789a", "San Pedro")
+        sucursal = "El Alto"
+        Login.login_account(self, "clienteb@gmail.com", "123456789a", sucursal)
+        dev = Login.sucursal_select(self, sucursal)
+        assert sucursal in dev
         time.sleep(2)
 
 

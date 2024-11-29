@@ -7,9 +7,12 @@ class Login:
         self.driver.find_element(By.XPATH, "//button[@type='submit']").click()
         self.driver.find_element(By.XPATH, f"//label[text()='{sucursal}']").click()
         self.driver.find_element(By.XPATH, "//button[@type='submit']").click()
-        devuelto = self.driver.find_element(By.XPATH, "//span[contains(@class, 'nav-link')]").text
 
-        assert sucursal in devuelto
+
+    def sucursal_select(self):
+        devuelto = self.driver.find_element(By.XPATH, "//span[contains(@class, 'nav-link')]").text
+        return devuelto
+        
 
 
 
