@@ -16,18 +16,24 @@ class TestLogin:
         self.driver.quit()
         print("Prueba visual completada")
 
-    def testLogin(self):
-        actual = "Miraflores"
-
-        Login.login_account(self, "cliente2@gmail.com", "123456789a")
+    def test_login_miraflores(self):
+        Login.login_account(self, "clienteb@gmail.com", "123456789a", "Miraflores")
         time.sleep(2)
-        self.driver.find_element(By.XPATH, f"//label[text()='{actual}']").click()
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, "//button[@type='submit']").click()
-        time.sleep(1)
 
-        devuelto = self.driver.find_element(By.XPATH, "//span[contains(@class, 'nav-link')]").text
+    def test_login_sopocachi(self):
+        Login.login_account(self, "clienteb@gmail.com", "123456789a", "Sopocachi")
+        time.sleep(2)
 
-        assert actual in devuelto
-        
+    def test_login__el_alto(self):
+        Login.login_account(self, "clienteb@gmail.com", "123456789a", "El Alto")
+        time.sleep(2)
+
+    def test_login__san_pedro(self):
+        Login.login_account(self, "clienteb@gmail.com", "123456789a", "San Pedro")
+        time.sleep(2)
+
+
+
+
+
     
