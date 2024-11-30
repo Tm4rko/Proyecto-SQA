@@ -104,11 +104,8 @@ time.sleep(2)
 
 
 
-driver.find_element(By.XPATH, "(//a[@class='page-link'])[3]").click()
-time.sleep(3)
-
 #edit
-driver.find_element(By.XPATH, "(//a[@class='btn btn-success btn-sm'])[1]").click()
+driver.find_element(By.XPATH, "(//a[@class='btn btn-success btn-sm'])[4]").click()
 
 time.sleep(3)
 
@@ -152,9 +149,6 @@ time.sleep(3)
 
 driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled']").click()
 
-
-driver.find_element(By.XPATH, "(//a[@class='page-link'])[3]").click()
-time.sleep(3)
 
 time.sleep(2)
 
