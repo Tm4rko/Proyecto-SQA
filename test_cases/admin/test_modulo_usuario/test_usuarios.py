@@ -157,6 +157,16 @@ driver.find_element(By.XPATH, "(//a[@class='page-link'])[3]").click()
 time.sleep(3)
 
 time.sleep(2)
+
+
+#buscar:
+
+driver.find_element(By.XPATH, "//input[@class='form-control form-control-sm']").send_keys("Emerson")
+
+time.sleep(2)
+
+
+
 #borrar
 driver.find_element(By.XPATH, "(//i[@class='fas fa-trash'])[1]").click()
 
@@ -175,6 +185,12 @@ driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled']").c
 
 
 time.sleep(2)
+
+
+
+
+
+
 
 
 driver.quit()
