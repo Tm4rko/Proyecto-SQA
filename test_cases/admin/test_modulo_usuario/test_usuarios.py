@@ -15,8 +15,9 @@ driver = webdriver.Chrome()
 # Maximizar la ventana del navegador
 driver.maximize_window()
 
+
 # Abrir url en el navegador
-driver.get('http://localhost/sistemarestaurante/public/admin/usuarios')
+driver.get('http://localhost/sistemarestaurante/public/admin/productos')
 
 # Acciones para interactuar con el navegador
 
@@ -31,7 +32,7 @@ time.sleep(2)
 
 
 
-#ver
+#crear
 
 driver.find_element(By.XPATH, "//a[@class='btn btn-info btn-sm']").click()
 
@@ -43,7 +44,6 @@ driver.find_element(By.XPATH, "//a[@class='btn btn-secondary']").click()
 
 time.sleep(2)
 
-#crear
 
 
 driver.find_element(By.XPATH, "//a[@class='btn btn-primary']").click()
@@ -51,73 +51,53 @@ driver.find_element(By.XPATH, "//a[@class='btn btn-primary']").click()
 time.sleep(2)
 
 
+driver.find_element(By.XPATH, "//select[@class='form-control']//option[text()='Bebidas']").click()
 
-driver.find_element(By.XPATH, "//select[@class='form-control']").send_keys("Cliente")
+time.sleep(2)
+
+
+driver.find_element(By.XPATH, "//input[@class='form-control']").send_keys("agua")
 
 time.sleep(2)
 
 
 
-driver.find_element(By.XPATH, "//input[@class='form-control']").send_keys("Emerson")
+driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("6")
+
+time.sleep(7)
+
+
+
+
+
+driver.find_element(By.XPATH,"//textarea[@name='descripcion']").send_keys("qwertyuXD")
+
 
 time.sleep(2)
 
 
-driver.find_element(By.XPATH, "//input[@name='email']").send_keys("emertusco911@gmail.com")
 
-time.sleep(2)
-
-
-driver.find_element(By.XPATH, "//input[@name='celular']").send_keys("68040689")
-
-time.sleep(2)
-
-
-driver.find_element(By.XPATH, "//input[@name='password']").send_keys("Qwerty123--")
-
-time.sleep(2)
-
-driver.find_element(By.XPATH, "//input[@name='password_confirmation']").send_keys("Qwerty123--")
-
-time.sleep(3)
-
-driver.find_element(By.XPATH, "//button[@class='btn btn-primary']").click()
+driver.find_element(By.XPATH, "//button[@class ='btn btn-primary']").click()
 
 time.sleep(10)
 
 
-
 driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled']").click()
-time.sleep(2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-driver.find_element(By.XPATH, "(//a[@class='page-link'])[3]").click()
-time.sleep(3)
-
-#edit
-driver.find_element(By.XPATH, "(//a[@class='btn btn-success btn-sm'])[1]").click()
-
 time.sleep(3)
 
 
+#editar
 
-driver.find_element(By.XPATH, "//select[@class='form-control']").send_keys("")
+driver.find_element(By.XPATH, "(//i[@class='fas fa-pencil'])[1]").click()
+
+time.sleep(5)
+
+
+
+
+driver.find_element(By.XPATH, "//select[@class='form-control']//option[text()='Bebidas']").click()
 
 time.sleep(2)
-
 
 
 driver.find_element(By.XPATH, "//input[@class='form-control']").send_keys("")
@@ -125,23 +105,21 @@ driver.find_element(By.XPATH, "//input[@class='form-control']").send_keys("")
 time.sleep(2)
 
 
-driver.find_element(By.XPATH, "//input[@name='email']").send_keys("")
+
+driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("")
+
+time.sleep(7)
+
+
+
+
+
+
+driver.find_element(By.XPATH,"//textarea[@name='descripcion']").send_keys("qwertyuXD")
+
 
 time.sleep(2)
 
-
-driver.find_element(By.XPATH, "//input[@name='celular']").send_keys("")
-
-time.sleep(2)
-
-
-driver.find_element(By.XPATH, "//input[@name='password']").send_keys("Qwerty123--XD")
-
-time.sleep(2)
-
-driver.find_element(By.XPATH, "//input[@name='password_confirmation']").send_keys("Qwerty123--XD")
-
-time.sleep(3)
 
 driver.find_element(By.XPATH, "//button[@class='btn btn-success']").click()
 
@@ -149,14 +127,24 @@ time.sleep(3)
 
 
 
-
 driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled']").click()
-
-
-driver.find_element(By.XPATH, "(//a[@class='page-link'])[3]").click()
 time.sleep(3)
 
+
+
+
+#driver.find_element(By.XPATH, "//select[@name='mitabla_length']//option[@value='10']").click()
+
+
+
+#buscar:
+
+driver.find_element(By.XPATH, "//input[@class='form-control form-control-sm']").send_keys("agua")
+
 time.sleep(2)
+
+
+
 #borrar
 driver.find_element(By.XPATH, "(//i[@class='fas fa-trash'])[1]").click()
 
@@ -176,12 +164,4 @@ driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled']").c
 
 time.sleep(2)
 
-
-driver.quit()
-
-
-
 print("Prueba visual completada")
-
-
-
