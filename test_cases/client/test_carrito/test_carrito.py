@@ -32,7 +32,8 @@ class TestLogin:
 
         assert listItemTitle == carritoItemTitle, f"LOS VALORES NO COINCIDEN: Actual: {carritoItemTitle}, Esperado: {listItemTitle}"
         assert listItemTitle1 == carritoItemTitle1, f"LOS VALORES NO COINCIDEN: Actual: {carritoItemTitle1}, Esperado: {listItemTitle1}"
-        
+
+    
 
 
 
