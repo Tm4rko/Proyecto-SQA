@@ -16,7 +16,7 @@ driver = webdriver.Chrome()
 driver.maximize_window()
 
 # Abrir url en el navegador
-driver.get('http://localhost/sistemarestaurante/public/admin/usuarios')
+driver.get('http://localhost/sistemarestaurante/public/home')
 
 # Acciones para interactuar con el navegador
 
@@ -30,6 +30,14 @@ driver.find_element(By.XPATH, "//button[@class='btn btn-block btn-flat btn-prima
 time.sleep(2)
 
 
+driver.find_element(By.XPATH, "//i[@class='fas fa-fw fa-users ']//following-sibling::p[contains(text(), 'Usuarios')]").click()
+
+time.sleep(2)
+
+
+driver.find_element(By.XPATH, "//i[@class='far fa-fw fa-circle ']//following-sibling::p[contains(text(), 'Usuarios')]").click()
+ 
+time.sleep(2)
 
 #ver
 
