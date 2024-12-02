@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+import time
 
 class Login:
     def login_account(self, email, password, sucursal):
