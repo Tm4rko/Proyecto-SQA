@@ -9,11 +9,11 @@ import time
 class TestProductos:
     
    
-    def setup_class(cls):
+    def setup_class(self):
         # Configuración del WebDriver
-        cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-        cls.driver.maximize_window()
-        cls.driver.get('http://localhost/sistemarestaurante/public/home')  # Cambia la URL si es necesario
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        self.driver.maximize_window()
+        self.driver.get('http://localhost/sistemarestaurante/public/home')  # Cambia la URL si es necesario
 
    
 
@@ -40,6 +40,12 @@ class TestProductos:
         driver.find_element(By.XPATH, "//input[@class='form-control']").send_keys("agua vital")
         time.sleep(2)
         driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("6")
+        time.sleep(2)
+        # Subir archivo 
+        ruta_logo = "C:\\Users\\PC\\Desktop\\applio\\pepsi.jpg"
+        driver.find_element(By.XPATH, "//input[@name='imagen']").send_keys(ruta_logo)
+
+
         time.sleep(2)
         driver.find_element(By.XPATH, "//textarea[@name='descripcion']").send_keys("qwertyuXD")
         time.sleep(2)
