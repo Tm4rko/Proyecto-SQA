@@ -40,7 +40,7 @@ class TestProductos:
         driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("6")
         time.sleep(2)
         # Subir archivo 
-        ruta_logo = "C:\\xampp\htdocs\\Proyecto-SQA\\Proyecto-SQA\\pepsi.jpg"
+        ruta_logo = "C:\\Users\\PC\\Desktop\\Proyecto-SQA-main\\test_cases\\admin\\test_producto\\pepsi.jpg"
         driver.find_element(By.XPATH, "//input[@name='imagen']").send_keys(ruta_logo)
 
 
@@ -67,7 +67,7 @@ class TestProductos:
         time.sleep(2)
         driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("")
         time.sleep(2)
-        ruta_logo = "C:\\xampp\\htdocs\\Proyecto-SQA\\Proyecto-SQA\\agua.png"
+        ruta_logo = "C:\\Users\\PC\\Desktop\\Proyecto-SQA-main\\test_cases\\admin\\test_producto\\agua.png"
         driver.find_element(By.XPATH, "//input[@name='imagen']").send_keys(ruta_logo)
         time.sleep(2)
         driver.find_element(By.XPATH, "//textarea[@name='descripcion']").send_keys("qwertyuXD")
