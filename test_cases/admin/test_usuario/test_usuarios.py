@@ -6,10 +6,9 @@ import time
 class TestUsuarios:
 
     def setup_class(self):
-        # Configuración del WebDriver
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
-        self.driver.get('http://localhost/sistemarestaurante/public/home')  # Cambia la URL si es necesario
+        self.driver.get('http://localhost/sistemarestaurante/public/home')
 
     def test_login(self):
         driver = self.driver
@@ -99,17 +98,12 @@ class TestUsuarios:
         driver.find_element(By.XPATH, "//a[@class='btn btn-secondary']").click()
         time.sleep(2)
 
-
-         # Buscar usuario y cambiar paginación:
-    # Buscar usuario y cambiar paginación:
     def test_search_user(self):
         driver = self.driver
 
-    # Buscar usuario
         driver.find_element(By.XPATH, "//input[@class='form-control form-control-sm']").send_keys("Juan Perez")
         time.sleep(2)
 
-    # Cambiar paginación
         driver.find_element(By.XPATH, "//select[@class='custom-select custom-select-sm form-control form-control-sm']//option[@value='10']").click()
         time.sleep(5)
         driver.find_element(By.XPATH, "//select[@class='custom-select custom-select-sm form-control form-control-sm']//option[@value='25']").click()
@@ -127,7 +121,6 @@ class TestUsuarios:
         driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled swal2-default-outline']").click()
         time.sleep(2)
 
-        # Validación de eliminación
         actual = "Se eliminó el usuario de manera correcta"
         devuelto = driver.find_element(By.XPATH, "//div[@class='swal2-html-container']").text
         assert actual == devuelto, f"Error: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"

@@ -21,7 +21,7 @@ class TestRegister:
         self.driver.find_element(By.XPATH, "//a[@id='id-registrate']").click()
         time.sleep(1)
         nombre = "Juan Prueba"
-        email = "prueba@gmail.com"
+        email = "prueba25@gmail.com"
         celular = "78958965"
         direccion = "Miraflores Av. Busch, C/ #5986"
         contraseña = "123456789a"

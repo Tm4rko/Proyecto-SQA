@@ -7,10 +7,9 @@ class TestProductos:
     
    
     def setup_class(self):
-        # Configuración del WebDriver
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
-        self.driver.get('http://localhost/sistemarestaurante/public/home')  # Cambia la URL si es necesario
+        self.driver.get('http://localhost/sistemarestaurante/public/home')
 
    
 
@@ -38,7 +37,6 @@ class TestProductos:
         time.sleep(2)
         driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("6")
         time.sleep(2)
-        # Subir archivo 
         ruta_logo = "C:\\xampp\htdocs\\Proyecto-SQA\\pepsi.jpg"
         driver.find_element(By.XPATH, "//input[@name='imagen']").send_keys(ruta_logo)
 
@@ -49,7 +47,6 @@ class TestProductos:
         driver.find_element(By.XPATH, "//button[@class='btn btn-primary']").click()
         time.sleep(2)
 
-        # Validación de creación
         actual = "Se registro el producto de manera correcta"
         devuelto = driver.find_element(By.XPATH, "//div[@class='swal2-html-container']").text
         assert actual == devuelto, f"Error: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
@@ -74,7 +71,6 @@ class TestProductos:
         driver.find_element(By.XPATH, "//button[@class='btn btn-success']").click()
         time.sleep(2)
 
-        # Validación de modificación
         actual = "Se actualizo el producto de manera correcta"
         devuelto = driver.find_element(By.XPATH, "//div[@class='swal2-html-container']").text
         assert actual == devuelto, f"Error: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
@@ -104,7 +100,6 @@ class TestProductos:
         driver.find_element(By.XPATH, "//input[@class='form-control form-control-sm']").send_keys("agua")
         time.sleep(2)
 
-        #ver:
         driver.find_element(By.XPATH, "(//i[@class='fas fa-eye'])[1]").click()
         time.sleep(3)
         driver.find_element(By.XPATH, "//a[@class='btn btn-secondary']").click()
@@ -117,7 +112,6 @@ class TestProductos:
         driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled swal2-default-outline']").click()
         time.sleep(2)
 
-        # Validación de eliminación
         actual = "Se eliminó el producto de manera correcta"
         devuelto = driver.find_element(By.XPATH, "//div[@class='swal2-html-container']").text
         assert actual == devuelto, f"Error: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
