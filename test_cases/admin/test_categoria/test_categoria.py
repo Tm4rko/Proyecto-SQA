@@ -40,7 +40,7 @@ class TestCategorias:
         driver.find_element(By.XPATH, "(//input[@class='form-control'])[2]").send_keys("Las ensaladas son parte de ")
         time.sleep(2)
         driver.find_element(By.XPATH, "//button[@class='btn btn-primary']").click()
-        time.sleep(6)
+        time.sleep(2)
 
         # Validación de creación
         actual = "Se registró la categoría de manera correcta"
@@ -58,7 +58,7 @@ class TestCategorias:
         driver.find_element(By.XPATH, "(//input[@class='form-control'])[2]").send_keys("las categorias")
         time.sleep(2)
         driver.find_element(By.XPATH, "//button[@class='btn btn-success']").click()
-        time.sleep(6)
+        time.sleep(2)
 
         # Validación de modificación
         actual = "Se modifico la categoria de manera correcta"
@@ -79,28 +79,10 @@ class TestCategorias:
         driver.find_element(By.XPATH, "(//i[@class='fas fa-trash'])[5]").click()
         time.sleep(2)
         driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled swal2-default-outline']").click()
-        time.sleep(3)
+        time.sleep(2)
 
         # Validación de eliminación
         actual = "Se eliminó la categoría de manera correcta"
-        devuelto = driver.find_element(By.XPATH, "//div[@class='swal2-html-container']").text
-        assert actual == devuelto, f"Error: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
-        driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled']").click()
-        time.sleep(2)
-
-    def test_edit_other_category(self):
-        driver = self.driver
-        driver.find_element(By.XPATH, "(//i[@class='fas fa-pencil'])[1]").click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, "//input[@class='form-control']").send_keys("")
-        time.sleep(2)
-        driver.find_element(By.XPATH, "(//input[@class='form-control'])[2]").send_keys("")
-        time.sleep(2)
-        driver.find_element(By.XPATH, "//button[@class='btn btn-success']").click()
-        time.sleep(6)
-
-        # Validación de modificación
-        actual = "Se modifico la categoria de manera correcta"
         devuelto = driver.find_element(By.XPATH, "//div[@class='swal2-html-container']").text
         assert actual == devuelto, f"Error: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
         driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled']").click()

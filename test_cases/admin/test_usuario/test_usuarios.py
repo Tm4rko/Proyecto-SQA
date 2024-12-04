@@ -44,7 +44,7 @@ class TestUsuarios:
         driver.find_element(By.XPATH, "//input[@name='password_confirmation']").send_keys("Qwerty123--")
         time.sleep(2)
         driver.find_element(By.XPATH, "//button[@class='btn btn-primary']").click()
-        time.sleep(5)
+        time.sleep(2)
 
         # Validación de creación
         actual = "Se registro al usuario de manera correcta"
@@ -75,7 +75,7 @@ class TestUsuarios:
         driver.find_element(By.XPATH, "//input[@name='password_confirmation']").send_keys("Qwerty123--XD")
         time.sleep(2)
         driver.find_element(By.XPATH, "//button[@class='btn btn-success']").click()
-        time.sleep(3)
+        time.sleep(2)
 
         # Validación de modificación
         actual = "Se modifico al usuario de manera correcta"
@@ -125,7 +125,7 @@ class TestUsuarios:
         driver.find_element(By.XPATH, "(//i[@class='fas fa-trash'])[1]").click()
         time.sleep(2)
         driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled swal2-default-outline']").click()
-        time.sleep(3)
+        time.sleep(2)
 
         # Validación de eliminación
         actual = "Se eliminó el usuario de manera correcta"

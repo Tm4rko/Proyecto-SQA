@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
@@ -40,7 +39,7 @@ class TestProductos:
         driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("6")
         time.sleep(2)
         # Subir archivo 
-        ruta_logo = "C:\\xampp\htdocs\\Proyecto-SQA\\Proyecto-SQA\\pepsi.jpg"
+        ruta_logo = "C:\\xampp\htdocs\\Proyecto-SQA\\pepsi.jpg"
         driver.find_element(By.XPATH, "//input[@name='imagen']").send_keys(ruta_logo)
 
 
@@ -48,7 +47,7 @@ class TestProductos:
         driver.find_element(By.XPATH, "//textarea[@name='descripcion']").send_keys("qwertyuXD")
         time.sleep(2)
         driver.find_element(By.XPATH, "//button[@class='btn btn-primary']").click()
-        time.sleep(10)
+        time.sleep(2)
 
         # Validación de creación
         actual = "Se registro el producto de manera correcta"
@@ -60,43 +59,45 @@ class TestProductos:
     def test_edit_product(self):
         driver = self.driver
         driver.find_element(By.XPATH, "(//i[@class='fas fa-pencil'])[1]").click()
-        time.sleep(5)
+        time.sleep(2)
         driver.find_element(By.XPATH, "//select[@class='form-control']//option[text()='Bebidas']").click()
         time.sleep(2)
         driver.find_element(By.XPATH, "//input[@class='form-control']").send_keys("")
         time.sleep(2)
         driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("")
         time.sleep(2)
-        ruta_logo = "C:\\xampp\\htdocs\\Proyecto-SQA\\Proyecto-SQA\\agua.png"
+        ruta_logo = "C:\\xampp\\htdocs\\Proyecto-SQA\\agua.png"
         driver.find_element(By.XPATH, "//input[@name='imagen']").send_keys(ruta_logo)
         time.sleep(2)
         driver.find_element(By.XPATH, "//textarea[@name='descripcion']").send_keys("qwertyuXD")
         time.sleep(2)
         driver.find_element(By.XPATH, "//button[@class='btn btn-success']").click()
-        time.sleep(3)
+        time.sleep(2)
 
         # Validación de modificación
         actual = "Se actualizo el producto de manera correcta"
         devuelto = driver.find_element(By.XPATH, "//div[@class='swal2-html-container']").text
         assert actual == devuelto, f"Error: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
         driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled']").click()
-        time.sleep(6)
+        time.sleep(2)
 
     def test_view_another_product(self):
         driver = self.driver
-        driver.find_element(By.XPATH, "(//a[@class='page-link'])[4]").click()
+        driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(2)
+        driver.find_element(By.XPATH, "//a[@data-dt-idx='2']").click()
         time.sleep(3)
-        driver.find_element(By.XPATH, "(//i[@class='fas fa-eye'])[3]").click()
+        driver.find_element(By.XPATH, "//a[contains(@href,'115')]//i[@class='fas fa-eye']").click()
         time.sleep(3)
         driver.find_element(By.XPATH, "//a[@class='btn btn-secondary']").click()
-        time.sleep(4)
+        time.sleep(2)
 
     def test_view_product_list(self):
         driver = self.driver
         driver.find_element(By.XPATH, "//select[@class='custom-select custom-select-sm form-control form-control-sm']//option[@value='10']").click()
-        time.sleep(5)
+        time.sleep(2)
         driver.find_element(By.XPATH, "//select[@class='custom-select custom-select-sm form-control form-control-sm']//option[@value='25']").click()
-        time.sleep(5)
+        time.sleep(2)
 
     def test_search_product(self):
         driver = self.driver
@@ -114,7 +115,7 @@ class TestProductos:
         driver.find_element(By.XPATH, "(//i[@class='fas fa-trash'])[1]").click()
         time.sleep(3)
         driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled swal2-default-outline']").click()
-        time.sleep(3)
+        time.sleep(2)
 
         # Validación de eliminación
         actual = "Se eliminó el producto de manera correcta"
