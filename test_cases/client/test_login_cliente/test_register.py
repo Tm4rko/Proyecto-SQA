@@ -20,29 +20,37 @@ class TestRegister:
     def test_register(self):
         self.driver.find_element(By.XPATH, "//a[@id='id-registrate']").click()
         time.sleep(1)
-
         nombre = "Juan Prueba"
         email = "prueba@gmail.com"
         celular = "78958965"
         direccion = "Miraflores Av. Busch, C/ #5986"
         contraseña = "123456789a"
-        self.driver.find_element(By.XPATH, "//input[@name='name']").send_keys(nombre)
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, "//input[@name='email']").send_keys(email)
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, "//input[@name='celular']").send_keys(celular)
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, "//input[@name='direccion']").send_keys(direccion)
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, "//input[@name='password']").send_keys(contraseña)
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, "//input[@name='password_confirmation']").send_keys(contraseña)
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, "//button[@type='submit']").click()
-        time.sleep(1)
+        Login.register(self, nombre, email, celular, direccion, contraseña)
+
         esperado_nombre = nombre
         actual_nombre = self.driver.find_element(By.XPATH, "//a[@id='navbarDropdown']").text
 
         assert esperado_nombre in actual_nombre, f"LOS VALORES NO COINCIDEN: Actual: {actual_nombre}, Esperado: {esperado_nombre}"
+        
 
+    def test_register_error(self):
+        self.driver.find_element(By.XPATH, "//a[@id='id-registrate']").click()
+        time.sleep(1)
+        nombre = "Juan Prueba"
+        email = "prueba@gmail.com"
+        celular = "18958965"
+        direccion = "Miraflores Av. Busch, C/ #5986"
+        contraseña = "1234567"
+        Login.register(self, nombre, email, celular, direccion, contraseña)
+        esperado_correo = "El valor del campo correo ya está en uso."
+        esperado_celular = "El campo celular debe comenzar con 6 o 7 y debe tener 8 dígitos"
+        esperado_contraseña = "El campo contraseña debe contener al menos 8 caracteres."
+
+        actual_correo = self.driver.find_element(By.XPATH, "//strong[contains(text(), 'correo')]").text
+        actual_celular = self.driver.find_element(By.XPATH, "//strong[contains(text(), 'celular')]").text
+        actual_contraseña = self.driver.find_element(By.XPATH, "//strong[contains(text(), 'contraseña')]").text
+
+        assert esperado_correo in actual_correo, f"LOS VALORES NO COINCIDEN: Actual: {actual_correo}, Esperado: {esperado_correo}"
+        assert esperado_celular in actual_celular, f"LOS VALORES NO COINCIDEN: Actual: {actual_celular}, Esperado: {esperado_celular}"
+        assert esperado_contraseña in actual_contraseña, f"LOS VALORES NO COINCIDEN: Actual: {actual_contraseña}, Esperado: {esperado_contraseña}"
     
