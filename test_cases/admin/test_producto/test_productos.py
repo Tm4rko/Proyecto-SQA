@@ -1,6 +1,4 @@
-import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -11,7 +9,7 @@ class TestProductos:
    
     def setup_class(self):
         # Configuración del WebDriver
-        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         self.driver.get('http://localhost/sistemarestaurante/public/home')  # Cambia la URL si es necesario
 
@@ -22,7 +20,7 @@ class TestProductos:
         driver.find_element(By.XPATH, "//input[@name='email']").send_keys("admin@gmail.com")
         driver.find_element(By.XPATH, "//input[@name='password']").send_keys("123456789a")
         driver.find_element(By.XPATH, "//button[@class='btn btn-block btn-flat btn-primary']").click()
-        time.sleep(2)
+        time.sleep(2)   
 
     def test_navigate_to_products(self):
         driver = self.driver
@@ -69,6 +67,9 @@ class TestProductos:
         time.sleep(2)
         driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("")
         time.sleep(2)
+        ruta_logo = "C:\\Users\\PC\\Desktop\\applio\\pepsi.jpg"
+        driver.find_element(By.XPATH, "//input[@name='imagen']").send_keys(ruta_logo)
+        time.sleep(2)
         driver.find_element(By.XPATH, "//textarea[@name='descripcion']").send_keys("qwertyuXD")
         time.sleep(2)
         driver.find_element(By.XPATH, "//button[@class='btn btn-success']").click()
@@ -101,6 +102,8 @@ class TestProductos:
         driver = self.driver
         driver.find_element(By.XPATH, "//input[@class='form-control form-control-sm']").send_keys("agua")
         time.sleep(2)
+
+        #ver:
         driver.find_element(By.XPATH, "(//i[@class='fas fa-eye'])[1]").click()
         time.sleep(3)
         driver.find_element(By.XPATH, "//a[@class='btn btn-secondary']").click()
