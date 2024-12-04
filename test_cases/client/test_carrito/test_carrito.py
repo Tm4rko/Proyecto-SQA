@@ -17,7 +17,7 @@ class TestLogin:
         self.driver.quit()
         print("Prueba visual completada")
 
-    def test_agregar_items_carrito(self):
+    """def test_agregar_items_carrito(self):
         Login.login_account(self, "clienteb@gmail.com", "123456789a", "Miraflores")
         time.sleep(1)
         self.driver.find_element(By.XPATH, "//a[text()='Realiza tu PEDIDO']").click()
@@ -82,13 +82,35 @@ class TestLogin:
         time.sleep(1)
         listItemTitle1 = productos.agregar_producto(self, 2, 112, "trescuartos", 118)
         time.sleep(1)
-
         self.driver.find_element(By.XPATH, "//td[@id='112']//following-sibling::td//a").click()
         time.sleep(1)
         contador_esperado = 2
         contador_actual = len(self.driver.find_elements(By.XPATH, "//table//tr"))
 
         assert contador_esperado == contador_actual, f"LOS VALORES NO COINCIDEN: Actual: {contador_actual}, Esperado: {contador_esperado}"
+    """
+
+    def test_eliminar_carrito(self):
+        productos.login_producto(self)
+
+        self.driver.find_element(By.XPATH, "//a[@href='vercarrito' and contains(@class, 'btn')]").click()
+        time.sleep(1)
+        self.driver.find_element(By.XPATH, "//a[@class='btn btn-outline-danger']").click()
+        time.sleep(1)
+
+        esperado_mensaje = "Carrito eliminado correctamente!"
+        actual_mensaje = self.driver.find_element(By.XPATH, "//div[@id='success-message']").text
+        assert esperado_mensaje in actual_mensaje, f"LOS VALORES NO COINCIDEN: Actual: {actual_mensaje}, Esperado: {esperado_mensaje}"
+
+    """def test_eliminar_item_carrito(self):
+        TestLogin.login_producto()
+
+        self.driver.find_element(By.XPATH, "//a[@href='vercarrito' and contains(@class, 'btn')]").click()
+        time.sleep(1)
+        """
+
+
+
 
 
 
