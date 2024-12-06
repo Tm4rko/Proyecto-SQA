@@ -17,11 +17,26 @@ class TestUsuarios:
         driver.find_element(By.XPATH, "//button[@class='btn btn-block btn-flat btn-primary']").click()
         time.sleep(2)
 
+        actual = "marko"  
+        devuelto = driver.find_element(By.XPATH,"//a[@class='nav-link dropdown-toggle']").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
+        time.sleep(2)
+
     def test_navigate_to_users(self):
         driver = self.driver
         driver.find_element(By.XPATH, "//i[@class='fas fa-fw fa-users ']//following-sibling::p[contains(text(), 'Usuarios')]").click()
         time.sleep(2)
+
+        #en revision
+
+        
+
         driver.find_element(By.XPATH, "//i[@class='far fa-fw fa-circle ']//following-sibling::p[contains(text(), 'Listado de Usuarios')]").click()
+        time.sleep(2)
+
+        actual = "Listado de Usuarios"  
+        devuelto = driver.find_element(By.XPATH,"//i[@class='far fa-fw fa-circle ']//following-sibling::p[contains(text(), 'Listado de Usuarios')]").text    
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
         time.sleep(2)
 
     def test_create_user(self):
@@ -83,15 +98,17 @@ class TestUsuarios:
         driver.find_element(By.XPATH, "//button[@class='swal2-confirm swal2-styled']").click()
         time.sleep(2)
 
+
     def test_view_user(self):
         driver = self.driver
-        driver.find_element(By.XPATH, "//a[@class='btn btn-info btn-sm']").click()
+        driver.find_element(By.XPATH, "(//a[@class='page-link'])[4]").click()
+        driver.find_element(By.XPATH, "(//a[@class='btn btn-info btn-sm'])[4]").click()
         time.sleep(2)
 
 
         # Validación de la vista del usuario
-        actual = "Usuarios/Usuario Registrado"
-        devuelto = driver.find_element(By.XPATH, "//div[@class='container-fluid']").text
+        actual = "JP321@gmail.com"
+        devuelto = driver.find_element(By.XPATH, "(//div[@class='form-group'])[3]").text
         assert actual in devuelto, f"Error en la visualización del usuario: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
 
 
@@ -104,12 +121,30 @@ class TestUsuarios:
         driver.find_element(By.XPATH, "//input[@class='form-control form-control-sm']").send_keys("Juan Perez")
         time.sleep(2)
 
+        actual = "Juan Perez"  
+        devuelto = driver.find_element(By.XPATH,"(//td[@style='text-align: center;'])[1]").text  
+                                               
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
+        time.sleep(2)
+
+    def test_view_user_list(self):
+        driver = self.driver
+
         driver.find_element(By.XPATH, "//select[@class='custom-select custom-select-sm form-control form-control-sm']//option[@value='10']").click()
         time.sleep(5)
         driver.find_element(By.XPATH, "//select[@class='custom-select custom-select-sm form-control form-control-sm']//option[@value='25']").click()
         time.sleep(5)
         driver.find_element(By.XPATH, "//select[@class='custom-select custom-select-sm form-control form-control-sm']//option[@value='10']").click()
         time.sleep(5)
+        
+    
+        actual = "10"  
+        devuelto = driver.find_element(By.XPATH,"//select[@class='custom-select custom-select-sm form-control form-control-sm']").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
+        time.sleep(2)
+
+
+
 
 
 
