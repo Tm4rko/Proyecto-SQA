@@ -20,11 +20,23 @@ class TestProductos:
         driver.find_element(By.XPATH, "//button[@class='btn btn-block btn-flat btn-primary']").click()
         time.sleep(2)   
 
+        actual = "marko"  
+        devuelto = driver.find_element(By.XPATH,"//a[@class='nav-link dropdown-toggle']").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
+        time.sleep(2)
+
     def test_navigate_to_products(self):
         driver = self.driver
         driver.find_element(By.XPATH, "//i[@class='fas fa-fw fa-list ']//following-sibling::p[contains(text(), 'Productos')]").click()
         time.sleep(2)
+        
         driver.find_element(By.XPATH, "//i[@class='far fa-fw fa-circle ']//following-sibling::p[contains(text(), 'Productos')]").click()
+        time.sleep(2)
+
+       
+        actual = "Listado de Productos"  
+        devuelto = driver.find_element(By.XPATH,"//i[@class='far fa-fw fa-circle ']//following-sibling::p[contains(text(), 'Listado de Productos')]").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
         time.sleep(2)
 
     def test_create_product(self):
@@ -37,7 +49,7 @@ class TestProductos:
         time.sleep(2)
         driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("6")
         time.sleep(2)
-        ruta_logo = "C:\\xampp\htdocs\\Proyecto-SQA\\pepsi.jpg"
+        ruta_logo = "C:\\xampp\htdocs\\Proyecto-SQA\\Proyecto-SQA\\pepsi.jpg"
         driver.find_element(By.XPATH, "//input[@name='imagen']").send_keys(ruta_logo)
 
 
@@ -63,7 +75,7 @@ class TestProductos:
         time.sleep(2)
         driver.find_element(By.XPATH, "//input[@name='precio_venta']").send_keys("")
         time.sleep(2)
-        ruta_logo = "C:\\xampp\\htdocs\\Proyecto-SQA\\agua.png"
+        ruta_logo = "C:\\xampp\\htdocs\\Proyecto-SQA\\Proyecto-SQA\\agua.png"
         driver.find_element(By.XPATH, "//input[@name='imagen']").send_keys(ruta_logo)
         time.sleep(2)
         driver.find_element(By.XPATH, "//textarea[@name='descripcion']").send_keys("qwertyuXD")
@@ -85,25 +97,72 @@ class TestProductos:
         time.sleep(3)
         driver.find_element(By.XPATH, "//a[contains(@href,'115')]//i[@class='fas fa-eye']").click()
         time.sleep(3)
+
+        actual = "Punta de S"  
+        devuelto = driver.find_element(By.XPATH,"(//div[@class='form-group'])[2]").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"  
+
         driver.find_element(By.XPATH, "//a[@class='btn btn-secondary']").click()
         time.sleep(2)
+
+
+
+    def test_view_another_product_original(self):
+        driver = self.driver
+        driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(2)
+        driver.find_element(By.XPATH, "(//i[@class='fas fa-eye'])[1]").click()
+        time.sleep(3)
+
+        actual = "agua vital"  
+        devuelto = driver.find_element(By.XPATH,"(//div[@class='form-group'])[2]").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"  
+
+        driver.find_element(By.XPATH, "//a[@class='btn btn-secondary']").click()
+        time.sleep(2)
+
+
 
     def test_view_product_list(self):
         driver = self.driver
         driver.find_element(By.XPATH, "//select[@class='custom-select custom-select-sm form-control form-control-sm']//option[@value='10']").click()
         time.sleep(2)
+
+        
         driver.find_element(By.XPATH, "//select[@class='custom-select custom-select-sm form-control form-control-sm']//option[@value='25']").click()
         time.sleep(2)
 
-    def test_search_product(self):
-        driver = self.driver
-        driver.find_element(By.XPATH, "//input[@class='form-control form-control-sm']").send_keys("agua")
+        actual = "25"  
+        devuelto = driver.find_element(By.XPATH,"//select[@class='custom-select custom-select-sm form-control form-control-sm']").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
         time.sleep(2)
 
+
+    def test_search_product(self):
+        driver = self.driver
+        driver.find_element(By.XPATH, "//input[@class='form-control form-control-sm']").send_keys("agua vital")
+        time.sleep(2)
+
+        actual = "agua vital"  
+        devuelto = driver.find_element(By.XPATH,"(//td[@style='vertical-align: middle;'])[2]").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
+        time.sleep(2)
+
+    def test_view_another_product_original(self):
+        driver = self.driver
+        driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(2)
         driver.find_element(By.XPATH, "(//i[@class='fas fa-eye'])[1]").click()
         time.sleep(3)
+
+        actual = "agua vital"  
+        devuelto = driver.find_element(By.XPATH,"(//div[@class='form-group'])[2]").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"  
+
         driver.find_element(By.XPATH, "//a[@class='btn btn-secondary']").click()
-        time.sleep(3)
+        time.sleep(2)
+
+        
 
     def test_delete_product(self):
         driver = self.driver
