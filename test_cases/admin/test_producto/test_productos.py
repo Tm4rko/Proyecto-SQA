@@ -179,3 +179,6 @@ class TestProductos:
 
     def test_complete(self):
         print("Prueba visual completada")
+
+    def teardown_class(self):
+        self.driver.quit()
