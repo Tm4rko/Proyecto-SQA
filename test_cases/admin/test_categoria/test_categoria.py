@@ -21,15 +21,34 @@ class TestCategorias:
         driver = self.driver
         driver.find_element(By.XPATH, "//input[@name='email']").send_keys("admin@gmail.com")
         driver.find_element(By.XPATH, "//input[@name='password']").send_keys("123456789a")
+
         driver.find_element(By.XPATH, "//button[@class='btn btn-block btn-flat btn-primary']").click()
         time.sleep(2)
+
+        actual = "marko"  
+        devuelto = driver.find_element(By.XPATH,"//a[@class='nav-link dropdown-toggle']").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
+        time.sleep(2)
+
+     
 
     def test_navigate_to_categories(self):
         driver = self.driver
         driver.find_element(By.XPATH, "//i[@class='fas fa-fw fa-tags ']//following-sibling::p[contains(text(), 'Categorias Menú')]").click()
         time.sleep(2)
+
+        #en revision
+
+
         driver.find_element(By.XPATH, "//i[@class='far fa-fw fa-circle ']//following-sibling::p[contains(text(), 'Listado de Categorias Menú')]").click()
         time.sleep(2)
+
+        actual = "Listado de Categorias Menú"  
+        devuelto = driver.find_element(By.XPATH,"//i[@class='far fa-fw fa-circle ']//following-sibling::p[contains(text(), 'Listado de Categorias Menú')]").text    
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"
+        time.sleep(2)
+
+
 
     def test_create_category(self):
         driver = self.driver
@@ -69,6 +88,10 @@ class TestCategorias:
         driver = self.driver
         driver.find_element(By.XPATH, "(//a[@class='btn btn-info btn-sm'])[5]").click()
         time.sleep(2)
+
+        actual = "Ensaladas"  
+        devuelto = driver.find_element(By.XPATH,"//div[@class='form-group']").text  
+        assert actual in devuelto, f"Error en la visualización de la categoria: Se esperaba '{actual}', pero se obtuvo '{devuelto}'"  
         driver.find_element(By.XPATH, "//a[@class='btn btn-secondary']").click()
         time.sleep(2)
 
